@@ -1,0 +1,204 @@
+import os
+
+services = [
+    {
+        'id': 'service-balayage',
+        'title': 'Dimensional Balayage',
+        'subtitle': 'Seamless blend with sun-kissed perfection',
+        'img': 'img/portfolio_pic1.jpg',
+        'about': 'Our Dimensional Balayage technique creates a soft, natural-looking highlight effect. By hand-painting the colour precisely where the sun would naturally hit, we achieve a custom, lived-in look that requires less maintenance than traditional foils.',
+        'why': 'Ideal for those seeking a premium, low-maintenance colour that grows out beautifully. Elevate your hair with multi-dimensional tones that add depth and movement.'
+    },
+    {
+        'id': 'service-bridal-glow',
+        'title': 'Bridal Glow Makeup',
+        'subtitle': 'Soft glam makeup for the perfect wedding day look',
+        'img': 'img/portfolio_pic2.jpg',
+        'about': 'Your wedding day deserves nothing less than perfection. Our Bridal Glow service provides a long-lasting, photo-ready application that enhances your natural features while ensuring you look flawless from the first look to the last dance.',
+        'why': 'Crucial for a stress-free wedding morning. We use professional, high-end products specifically designed to withstand tears, hugs, and hours of celebration without requiring constant touch-ups.'
+    },
+    {
+        'id': 'service-oxygen-facial',
+        'title': 'Oxygen Facial',
+        'subtitle': 'Deeply hydrating and rejuvenating treatment',
+        'img': 'img/portfolio_pic3.jpg',
+        'about': 'A revolutionary skincare treatment that delivers highly concentrated oxygen and custom serums directly into the skin. This non-invasive procedure instantly plumps, hydrates, and brightens your complexion.',
+        'why': 'Perfect before significant events or as a monthly reset. It combats environmental stress, reduces fine lines, and provides an immediate, noticeable, lit-from-within glow.'
+    },
+    {
+        'id': 'service-hot-stone-massage',
+        'title': 'Hot Stone Massage',
+        'subtitle': 'Ultimate relaxation and muscle tension relief',
+        'img': 'img/portfolio_pic4.jpg',
+        'about': 'Experience profound relaxation as smooth, heated stones are strategically placed and used to massage your body. The heat penetrates deeply into the muscles, melting away tension and promoting deep tissue release without intense pressure.',
+        'why': 'Essential for relieving chronic pain, reducing stress, and improving sleep quality. It is the ultimate form of self-care to reset both body and mind in our chaotic world.'
+    },
+    {
+        'id': 'service-precision-cut',
+        'title': 'Precision Cut',
+        'subtitle': 'Tailored bob with sharp, clean lines',
+        'img': 'img/portfolio_pic5.jpg',
+        'about': 'A masterclass in technique. Our precision cuts are tailored exactly to your bone structure and hair texture. Whether it is a sharp bob or expertly placed face-framing layers, the architecture of the cut ensures it falls perfectly.',
+        'why': 'A great haircut is the foundation of your entire look. Precision cutting means your hair is easier to style at home and maintains its shape beautifully between salon visits.'
+    },
+    {
+        'id': 'service-evening-glamour',
+        'title': 'Evening Glamour',
+        'subtitle': 'Bold lip and smoky eye for a night out',
+        'img': 'img/portfolio_pic6.jpg',
+        'about': 'Make a statement at your next gala, party, or evening event. This makeup service focuses on striking features—from perfectly blended smoky eyes to impeccably lined bold lips, all tailored to complement your evening attire.',
+        'why': 'Why blend in when you can stand out? Professional application ensures your dramatic look stays put all night long, allowing you to focus completely on enjoying your event.'
+    },
+    {
+        'id': 'service-restorative-mask',
+        'title': 'Restorative Mask',
+        'subtitle': 'Nourishing hair and scalp treatment',
+        'img': 'img/portfolio_pic7.jpg',
+        'about': 'A luxurious, intensive treatment designed to rescue dry, damaged, or over-processed hair. We apply a custom blend of proteins, vitamins, and natural oils, enhanced with steam therapy for maximum penetration.',
+        'why': 'Daily styling and environmental factors take a toll on hair integrity. This treatment restores elasticity, imparts incredible shine, and significantly reduces breakage, returning your hair to its healthiest state.'
+    },
+    {
+        'id': 'service-aromatherapy-bath',
+        'title': 'Aromatherapy Bath',
+        'subtitle': 'A tranquil floral soak for the senses',
+        'img': 'img/portfolio_pic8.jpg',
+        'about': 'Submerge yourself in a bespoke blend of essential oils, therapeutic salts, and fresh botanicals. This sensory journey is customized to your needs—whether you seek invigoration, deep relaxation, or muscle recovery.',
+        'why': 'More than just a bath, it is a holistic wellness ritual. It detoxifies the skin, soothes the nervous system, and provides a quiet space for mental clarity and profound peace.'
+    }
+]
+
+template = """<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1">
+  <title>The Chennai Salon | {title}</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css?v=14" rel="stylesheet" type="text/css">
+  <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="css/animate.css" rel="stylesheet" type="text/css">
+  <style>
+    body { background-color: #1A1A1A; color: #E0E0E0; }
+    .service-hero {
+        padding: 150px 0 80px 0;
+        background-color: #111111;
+        color: #FFFFFF;
+        text-align: center;
+    }
+    .service-hero h1 { color: #D4AF37; font-size: 48px; margin-bottom: 20px; }
+    .service-hero p { color: #E0E0E0; font-size: 18px; }
+    .service-detail-section { padding: 80px 0; background-color: #1A1A1A; }
+    .service-img-wrap img { width: 100%; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .service-text-wrap h3 { color: #FFFFFF; font-size: 32px; margin-bottom: 20px; margin-top: 30px; }
+    .service-text-wrap p { color: #E0E0E0; font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    .service-text-wrap h4 { color: #D4AF37; font-size: 24px; margin-top: 40px; margin-bottom: 15px; }
+    .back-btn { display: inline-block; margin-top: 40px; color: #E0E0E0; font-weight: bold; text-decoration: underline; }
+    .back-btn:hover { color: #D4AF37; }
+  </style>
+</head>
+<body>
+
+  <!--Header_section-->
+  <header id="header_wrapper">
+    <div class="container nav-container">
+      <div class="header_box">
+        <div class="logo">
+          <a href="index.html#hero">
+            <span class="logo-title" style="font-size: 20px; letter-spacing: 2px;">THE CHENNAI</span>
+            <span class="logo-subtitle" style="letter-spacing: 11px;">SALON</span>
+          </a>
+        </div>
+        <nav class="navbar navbar-inverse" role="navigation">
+          <div class="navbar-header">
+            <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div id="main-nav" class="collapse navbar-collapse navStyle">
+            <ul class="nav navbar-nav" id="mainNav">
+              <li><a href="index.html#hero">Home</a></li>
+              <li><a href="index.html#aboutUs">The Salon</a></li>
+              <li><a href="index.html#service">Services</a></li>
+              <li><a href="index.html#Portfolio">Gallery</a></li>
+              <li><a href="index.html#experience">Reviews</a></li>
+              <li class="nav-cta-item"><a href="index.html#contact" class="nav-btn">Get in Touch</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="service-hero">
+    <div class="container">
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+    </div>
+  </section>
+
+  <section class="service-detail-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 service-img-wrap">
+                <img src="{img}" alt="{title}">
+            </div>
+            <div class="col-md-6 service-text-wrap">
+                <h3>About This Service</h3>
+                <p>{about}</p>
+                
+                <h4>Why You Need It</h4>
+                <p>{why}</p>
+
+                <br>
+                <a href="index.html#contact" class="btn-premium" style="display:inline-block; margin-top: 20px;">Book This Service</a>
+                <br>
+                <a href="index.html#Portfolio" class="back-btn"><i class="fa fa-angle-left"></i> Back to Gallery</a>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="footer_wrapper" id="contact">
+    <div class="container contact-container">
+      <div class="row">
+        <div class="col-lg-5 col-md-5">
+          <div class="contact_info">
+            <div class="detail">
+              <h4>Visit Us</h4>
+              <p>123 Luxury Avenue, Suite 400<br>Beverly Hills, CA 90210</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-7">
+            <div class="detail">
+              <h4>Get in Touch</h4>
+              <p>Email: hello@thechennaisalon.com<br>Phone: (310) 555-0198</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <span>© 2026 The Chennai Salon. All rights reserved. | Designed for Elegance.</span>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>"""
+
+out_dir = 'c:/Users/Bharathi/Desktop/beauty-salon-bootstrap-html5-template'
+
+for s in services:
+    content = template
+    for key, value in s.items():
+        content = content.replace('{' + key + '}', value)
+    
+    file_path = os.path.join(out_dir, s['id'] + '.html')
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+
+print(f"Generated {len(services)} individual html service pages.")
