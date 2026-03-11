@@ -2562,8 +2562,60 @@ div.mc-image {
 
     .navbar-inverse .navbar-nav>li>a {
         color: #D0D0D0;
-        font-size: 14px;
-        padding: 10px 11px;
+        font-size: 16px;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .navStyle ul li:last-child a {
+        border-bottom: none;
+    }
+    .nav-cta-item {
+        margin-left: 0 !important;
+        margin-top: 15px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Fixed Premium Mobile Header */
+    .header_box {
+        flex-wrap: wrap;
+        border-radius: 15px; 
+        padding: 5px 15px;
+    }
+    .navbar-header {
+        float: none;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        margin-top: -38px; /* Pull up next to logo */
+    }
+    .navbar-collapse {
+        width: 100%;
+        margin-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.1) !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(26, 26, 26, 0.98);
+        padding: 20px 0;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 99999;
+    }
+    .navStyle ul {
+        flex-direction: column;
+        width: 100%;
+        display: block;
+    }
+    .navStyle ul li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        display: block;
+    }
+    .navStyle {
+        float: none;
+        width: 100%;
     }
 }
 
@@ -2736,6 +2788,7 @@ h6 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.4s ease;
+    position: relative; /* relative for mobile absolute positioning */
 }
 
 /* When at the top (not scrolled), make it touch the ends */
@@ -2802,10 +2855,15 @@ h6 {
 
 .navStyle ul {
     margin: 0;
-    display: flex;
-    align-items: center;
     list-style: none;
     padding: 0;
+}
+
+@media (min-width: 769px) {
+    .navStyle ul {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .navStyle ul li {
